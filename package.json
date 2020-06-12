@@ -1,0 +1,50 @@
+{
+  "name": "@akashic/pdi-common-impl",
+  "version": "0.0.1",
+  "description": "Common implementation of PDI",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "prepublish": "npm run clean && npm run build",
+    "prepare": "npm run prepublish",
+    "build": "npm run clean && tsc -p ./",
+    "clean": "rimraf -r lib",
+    "test": "npm run test:jest && npm run lint",
+    "test:jest": "jest --config jest.config.js",
+    "lint": "npm run format && npm run eslint && npm run lint:md",
+    "lint:md": "remark ./*.md --frail --no-stdout --quiet --rc-path ./.remarkrc",
+    "format": "prettier --write \"src/**/*.ts\" --config prettier.config.json",
+    "eslint": "eslint -c .eslintrc.js \"src/**/*.ts\" --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/akashic-games/pdi-common-impl.git"
+  },
+  "author": "DWANGO Co., Ltd.",
+  "license": "MIT",
+  "files": [
+    "lib",
+    "README.md",
+    "package.json"
+  ],
+  "dependencies": {
+    "@akashic/akashic-engine": "~3.0.0-beta.25"
+  },
+  "devDependencies": {
+    "@akashic/remark-preset-lint": "^0.1.1",
+    "@types/jest": "^25.1.2",
+    "@typescript-eslint/eslint-plugin": "^2.19.2",
+    "@typescript-eslint/parser": "^2.19.2",
+    "eslint": "^6.8.0",
+    "eslint-plugin-import": "^2.20.2",
+    "jest": "^25.1.0",
+    "prettier": "^1.19.1",
+    "remark-cli": "^8.0.0",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^25.2.0",
+    "typescript": "^3.7.5"
+  },
+  "publishConfig": {
+    "@akashic:registry": "https://registry.npmjs.org/"
+  }
+}
