@@ -1,4 +1,4 @@
-import { SurfaceLike, VideoAssetLike, VideoPlayerLike, VideoSystemLike } from "@akashic/akashic-engine";
+import * as pdi from "@akashic/akashic-pdi";
 import { Asset } from "./Asset";
 
 /**
@@ -7,7 +7,7 @@ import { Asset } from "./Asset";
  * game.jsonによって定義された内容をもとに暗黙的に生成されたインスタンスを、
  * Scene#assets、またはGame#assetsによって取得して利用する。
  */
-export abstract class VideoAsset extends Asset implements VideoAssetLike {
+export abstract class VideoAsset extends Asset implements pdi.VideoAsset {
 	type: "video" = "video";
 	width: number;
 	height: number;
@@ -29,7 +29,7 @@ export abstract class VideoAsset extends Asset implements VideoAssetLike {
 	/**
 	 * @private
 	 */
-	_system: VideoSystemLike;
+	_system: pdi.VideoSystem;
 
 	/**
 	 * @private
@@ -46,7 +46,7 @@ export abstract class VideoAsset extends Asset implements VideoAssetLike {
 		assetPath: string,
 		width: number,
 		height: number,
-		system: VideoSystemLike,
+		system: pdi.VideoSystem,
 		loop: boolean,
 		useRealSize: boolean
 	) {
@@ -60,9 +60,9 @@ export abstract class VideoAsset extends Asset implements VideoAssetLike {
 		this._useRealSize = useRealSize;
 	}
 
-	abstract asSurface(): SurfaceLike;
+	abstract asSurface(): pdi.Surface;
 
-	play(_loop?: boolean): VideoPlayerLike {
+	play(_loop?: boolean): pdi.VideoPlayer {
 		this.getPlayer().play(this);
 		return this.getPlayer();
 	}
@@ -71,7 +71,7 @@ export abstract class VideoAsset extends Asset implements VideoAssetLike {
 		this.getPlayer().stop();
 	}
 
-	abstract getPlayer(): VideoPlayerLike;
+	abstract getPlayer(): pdi.VideoPlayer;
 
 	destroy(): void {
 		this._system = undefined!;

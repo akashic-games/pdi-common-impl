@@ -1,7 +1,7 @@
-import * as g from "@akashic/akashic-engine";
-import * as pdi from "../../";
+import * as pdi from "@akashic/akashic-pdi";
+import * as pci from "../../";
 
-export class AudioSystem implements g.AudioSystemLike {
+export class AudioSystem implements pdi.AudioSystem {
 	id: string;
 	volume: number;
 	_muted: boolean;
@@ -14,13 +14,13 @@ export class AudioSystem implements g.AudioSystemLike {
 	stopAll(): void {
 		// do nothing
 	}
-	findPlayers(_asset: g.AudioAssetLike): g.AudioPlayerLike[] {
+	findPlayers(_asset: pdi.AudioAsset): pdi.AudioPlayer[] {
 		return [];
 	}
-	createPlayer(): g.AudioPlayerLike {
+	createPlayer(): pdi.AudioPlayer {
 		return null!;
 	}
-	requestDestroy(_asset: g.AudioAssetLike): void {
+	requestDestroy(_asset: pdi.AudioAsset): void {
 		// do nothing
 	}
 	_reset(): void {
@@ -34,42 +34,42 @@ export class AudioSystem implements g.AudioSystemLike {
 	}
 }
 
-export class VideoSystem implements g.VideoSystemLike {}
+export class VideoSystem implements pdi.VideoSystem {}
 
-export class AudioAsset extends pdi.AudioAsset {
+export class AudioAsset extends pci.AudioAsset {
 	constructor(
 		_necessaryRetryCount: number,
 		id: string,
 		assetPath: string,
 		duration: number,
-		system: g.AudioSystemLike,
+		system: pdi.AudioSystem,
 		loop: boolean,
-		hint: g.AudioAssetHint
+		hint: pdi.AudioAssetHint
 	) {
 		super(id, assetPath, duration, system, loop, hint);
 	}
-	_load(_loader: g.AssetLoadHandler): void {
+	_load(_loader: pdi.AssetLoadHandler): void {
 		// do nothing
 	}
 }
-export class VideoAsset extends pdi.VideoAsset {
-	asSurface(): g.SurfaceLike {
+export class VideoAsset extends pci.VideoAsset {
+	asSurface(): pdi.Surface {
 		return null!;
 	}
-	getPlayer(): g.VideoPlayerLike {
+	getPlayer(): pdi.VideoPlayer {
 		return null!;
 	}
-	_load(_loader: g.AssetLoadHandler): void {
+	_load(_loader: pdi.AssetLoadHandler): void {
 		return null!;
 	}
 }
 
-export class Surface extends pdi.Surface {
+export class Surface extends pci.Surface {
 	constructor(width: number, height: number, drawable?: any) {
 		super(width, height, drawable);
 	}
 
-	renderer(): g.RendererLike {
+	renderer(): pdi.Renderer {
 		return null!;
 	}
 	isPlaying(): boolean {

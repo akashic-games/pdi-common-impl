@@ -1,26 +1,27 @@
-import { Trigger, VideoAssetLike, VideoPlayerEvent, VideoPlayerLike } from "@akashic/akashic-engine";
+import * as pdi from "@akashic/akashic-pdi";
+import { Trigger } from "@akashic/trigger";
 
 /**
  * ビデオ再生を行うクラス。
  *
  * ゲーム開発者は本クラスのインスタンスを直接生成すべきではない。
  */
-export class VideoPlayer implements VideoPlayerLike {
+export class VideoPlayer implements pdi.VideoPlayer {
 	/**
 	 * 再生中のビデオアセット。
 	 * 再生中のものがない場合、 `undefined` 。
 	 */
-	currentVideo: VideoAssetLike | undefined;
+	currentVideo: pdi.VideoAsset | undefined;
 
 	/**
 	 * `play()` が呼び出された時に通知される `Trigger` 。
 	 */
-	onPlay: Trigger<VideoPlayerEvent>;
+	onPlay: Trigger<pdi.VideoPlayerEvent>;
 
 	/**
 	 * `stop()` が呼び出された時に通知される `Trigger` 。
 	 */
-	onStop: Trigger<VideoPlayerEvent>;
+	onStop: Trigger<pdi.VideoPlayerEvent>;
 
 	/**
 	 * 音量。
@@ -35,13 +36,13 @@ export class VideoPlayer implements VideoPlayerLike {
 	 * `play()` が呼び出された時に通知される `Trigger` 。
 	 * @deprecated 非推奨である。将来的に削除される。代わりに `onPlay` を利用すること。
 	 */
-	played: Trigger<VideoPlayerEvent>;
+	played: Trigger<pdi.VideoPlayerEvent>;
 
 	/**
 	 * `stop()` が呼び出された時に通知される `Trigger` 。
 	 * @deprecated 非推奨である。将来的に削除される。代わりに `onStop` を利用すること。
 	 */
-	stopped: Trigger<VideoPlayerEvent>;
+	stopped: Trigger<pdi.VideoPlayerEvent>;
 
 	/**
 	 * @private
@@ -53,8 +54,8 @@ export class VideoPlayer implements VideoPlayerLike {
 	 */
 	constructor(loop?: boolean) {
 		this._loop = !!loop;
-		this.onPlay = new Trigger<VideoPlayerEvent>();
-		this.onStop = new Trigger<VideoPlayerEvent>();
+		this.onPlay = new Trigger<pdi.VideoPlayerEvent>();
+		this.onStop = new Trigger<pdi.VideoPlayerEvent>();
 		this.played = this.onPlay;
 		this.stopped = this.onStop;
 		this.currentVideo = undefined;
@@ -67,7 +68,7 @@ export class VideoPlayer implements VideoPlayerLike {
 	 * 再生後、 `this.onPlay` がfireされる。
 	 * @param Video 再生するビデオアセット
 	 */
-	play(videoAsset: VideoAssetLike): void {
+	play(videoAsset: pdi.VideoAsset): void {
 		this.currentVideo = videoAsset;
 		this.onPlay.fire({
 			player: this,

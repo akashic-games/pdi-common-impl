@@ -1,7 +1,7 @@
-import { CommonSize, SurfaceAtlasLike, SurfaceAtlasSlotLike, SurfaceLike } from "@akashic/akashic-engine";
+import * as pdi from "@akashic/akashic-pdi";
 import { SurfaceAtlasSlot } from "./SurfaceAtrasSlot";
 
-function getSurfaceAtlasSlot(slot: SurfaceAtlasSlotLike, width: number, height: number): SurfaceAtlasSlotLike | null {
+function getSurfaceAtlasSlot(slot: pdi.SurfaceAtlasSlot, width: number, height: number): pdi.SurfaceAtlasSlot | null {
 	while (slot) {
 		if (slot.width >= width && slot.height >= height) {
 			return slot;
@@ -20,16 +20,16 @@ function getSurfaceAtlasSlot(slot: SurfaceAtlasSlotLike, width: number, height: 
  *
  * 本クラスのインスタンスをゲーム開発者が直接生成することはなく、ゲーム開発者が利用する必要もない。
  */
-export class SurfaceAtlas implements SurfaceAtlasLike {
+export class SurfaceAtlas implements pdi.SurfaceAtlas {
 	/**
 	 * @private
 	 */
-	_surface: SurfaceLike;
+	_surface: pdi.Surface;
 
 	/**
 	 * @private
 	 */
-	_emptySurfaceAtlasSlotHead: SurfaceAtlasSlotLike;
+	_emptySurfaceAtlasSlotHead: pdi.SurfaceAtlasSlot;
 
 	/**
 	 * @private
@@ -39,9 +39,9 @@ export class SurfaceAtlas implements SurfaceAtlasLike {
 	/**
 	 * @private
 	 */
-	_usedRectangleAreaSize: CommonSize;
+	_usedRectangleAreaSize: pdi.CommonSize;
 
-	constructor(surface: SurfaceLike) {
+	constructor(surface: pdi.Surface) {
 		this._surface = surface;
 		this._emptySurfaceAtlasSlotHead = new SurfaceAtlasSlot(0, 0, this._surface.width, this._surface.height);
 		this._accessScore = 0;
@@ -51,7 +51,7 @@ export class SurfaceAtlas implements SurfaceAtlasLike {
 	/**
 	 * @private
 	 */
-	_acquireSurfaceAtlasSlot(width: number, height: number): SurfaceAtlasSlotLike | null {
+	_acquireSurfaceAtlasSlot(width: number, height: number): pdi.SurfaceAtlasSlot | null {
 		// Renderer#drawImage()でサーフェス上の一部を描画するとき、
 		// 指定した部分に隣接する画素がにじみ出る現象が確認されている。
 		// ここれではそれを避けるため1pixelの余白を与えている。
@@ -66,8 +66,8 @@ export class SurfaceAtlas implements SurfaceAtlasLike {
 
 		var remainWidth = slot.width - width;
 		var remainHeight = slot.height - height;
-		var left: SurfaceAtlasSlotLike;
-		var right: SurfaceAtlasSlotLike;
+		var left: pdi.SurfaceAtlasSlot;
+		var right: pdi.SurfaceAtlasSlot;
 		if (remainWidth <= remainHeight) {
 			left = new SurfaceAtlasSlot(slot.x + width, slot.y, remainWidth, height);
 			right = new SurfaceAtlasSlot(slot.x, slot.y + height, slot.width, remainHeight);
@@ -101,7 +101,7 @@ export class SurfaceAtlas implements SurfaceAtlasLike {
 	/**
 	 * @private
 	 */
-	_updateUsedRectangleAreaSize(slot: SurfaceAtlasSlotLike): void {
+	_updateUsedRectangleAreaSize(slot: pdi.SurfaceAtlasSlot): void {
 		const slotRight = slot.x + slot.width;
 		const slotBottom = slot.y + slot.height;
 		if (slotRight > this._usedRectangleAreaSize.width) {
@@ -121,7 +121,7 @@ export class SurfaceAtlas implements SurfaceAtlasLike {
 	 * @param width サーフェス内における矩形の幅。0より大きい数値でなければならない
 	 * @param height サーフェス内における矩形の高さ。0より大きい数値でなければならない
 	 */
-	addSurface(surface: SurfaceLike, offsetX: number, offsetY: number, width: number, height: number): SurfaceAtlasSlotLike | null {
+	addSurface(surface: pdi.Surface, offsetX: number, offsetY: number, width: number, height: number): pdi.SurfaceAtlasSlot | null {
 		const slot = this._acquireSurfaceAtlasSlot(width, height);
 		if (!slot) {
 			return null;
@@ -153,7 +153,7 @@ export class SurfaceAtlas implements SurfaceAtlasLike {
 	/**
 	 * このSurfaceAtlasの大きさを取得する。
 	 */
-	getAtlasUsedSize(): CommonSize {
+	getAtlasUsedSize(): pdi.CommonSize {
 		return this._usedRectangleAreaSize;
 	}
 

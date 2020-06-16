@@ -1,11 +1,11 @@
-import { GlyphLike, SurfaceAtlasLike, SurfaceLike } from "@akashic/akashic-engine";
+import * as pdi from "@akashic/akashic-pdi";
 
 /**
  * グリフ。
  *
  * @deprecated 非推奨である。将来的に削除される予定である。
  */
-export class Glyph implements GlyphLike {
+export class Glyph implements pdi.Glyph {
 	/**
 	 * 文字コード。
 	 */
@@ -44,7 +44,7 @@ export class Glyph implements GlyphLike {
 	 *
 	 * 描画すべき内容がない場合 `surface` は `undefined` である。
 	 */
-	surface: SurfaceLike | undefined;
+	surface: pdi.Surface | undefined;
 
 	/**
 	 * X軸方向についての描画位置調整量。
@@ -76,7 +76,7 @@ export class Glyph implements GlyphLike {
 	 */
 	isSurfaceValid: boolean;
 
-	_atlas: SurfaceAtlasLike | null;
+	_atlas: pdi.SurfaceAtlas | null;
 
 	/**
 	 * `Glyph` のインスタンスを生成する。
@@ -91,7 +91,7 @@ export class Glyph implements GlyphLike {
 		offsetX: number = 0,
 		offsetY: number = 0,
 		advanceWidth: number = width,
-		surface?: SurfaceLike,
+		surface?: pdi.Surface,
 		isSurfaceValid: boolean = !!surface
 	) {
 		this.code = code;

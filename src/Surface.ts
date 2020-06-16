@@ -1,4 +1,4 @@
-import { CommonSize, RendererLike, SurfaceLike } from "@akashic/akashic-engine";
+import * as pdi from "@akashic/akashic-pdi";
 import { ExceptionFactory } from "./ExceptionFactory";
 
 /**
@@ -7,7 +7,7 @@ import { ExceptionFactory } from "./ExceptionFactory";
  * このクラスのインスタンスは、エンジンによって暗黙に生成される。
  * ゲーム開発者はこのクラスのインスタンスを明示的に生成する必要はなく、またできない。
  */
-export abstract class Surface implements SurfaceLike, CommonSize {
+export abstract class Surface implements pdi.Surface, pdi.CommonSize {
 	/**
 	 * 描画領域の幅。
 	 * この値を直接書き換えてはならない。
@@ -53,7 +53,7 @@ export abstract class Surface implements SurfaceLike, CommonSize {
 	/**
 	 * このSurfaceへの描画手段を提供するRendererを生成して返す。
 	 */
-	abstract renderer(): RendererLike;
+	abstract renderer(): pdi.Renderer;
 
 	/**
 	 * このSurfaceが動画を再生中であるかどうかを判定する。

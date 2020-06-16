@@ -1,4 +1,4 @@
-import { TextAssetLike } from "@akashic/akashic-engine";
+import * as pdi from "@akashic/akashic-pdi";
 import { Asset } from "./Asset";
 
 /**
@@ -9,7 +9,7 @@ import { Asset } from "./Asset";
  *
  * TextAsset#dataによって、本リソースが保持する文字列を取得することが出来る。
  */
-export abstract class TextAsset extends Asset implements TextAssetLike {
+export abstract class TextAsset extends Asset implements pdi.TextAsset {
 	type: "text" = "text";
 	data: string;
 

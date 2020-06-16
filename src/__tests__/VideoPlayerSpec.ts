@@ -1,4 +1,4 @@
-import { Trigger } from "@akashic/akashic-engine";
+import { Trigger } from "@akashic/trigger";
 import { VideoPlayer } from "..";
 
 describe("VideoPlayer", () => {

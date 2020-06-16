@@ -1,4 +1,5 @@
-import { AssetLike, AssetLoadHandler, Trigger } from "@akashic/akashic-engine";
+import * as pdi from "@akashic/akashic-pdi";
+import { Trigger } from "@akashic/trigger";
 
 /**
  * 各種リソースを表すクラス。
@@ -6,19 +7,19 @@ import { AssetLike, AssetLoadHandler, Trigger } from "@akashic/akashic-engine";
  * game.jsonによって定義された内容をもとに暗黙的に生成されたインスタンスを、
  * Scene#assets、またはGame#assetsによって取得して利用する。
  */
-export abstract class Asset implements AssetLike {
+export abstract class Asset implements pdi.Asset {
 	// @ts-ignore 妥当な値を派生クラスが代入しているのでここでは値を入れない
 	type: string;
 	id: string;
 	path: string;
 	originalPath: string;
-	onDestroyed: Trigger<AssetLike>;
+	onDestroyed: Trigger<pdi.Asset>;
 
 	constructor(id: string, path: string) {
 		this.id = id;
 		this.originalPath = path;
 		this.path = this._assetPathFilter(path);
-		this.onDestroyed = new Trigger<AssetLike>();
+		this.onDestroyed = new Trigger<pdi.Asset>();
 	}
 
 	destroy(): void {
@@ -60,7 +61,7 @@ export abstract class Asset implements AssetLike {
 	 * @param loader 読み込み結果の通知を受け取るハンドラ
 	 * @private
 	 */
-	abstract _load(loader: AssetLoadHandler): void;
+	abstract _load(loader: pdi.AssetLoadHandler): void;
 
 	/**
 	 * @private
