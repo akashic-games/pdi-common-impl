@@ -1,4 +1,4 @@
-import * as pdi from "@akashic/akashic-pdi";
+import * as pdi from "@akashic/pdi-types";
 import { SurfaceAtlasSlot } from "./SurfaceAtrasSlot";
 
 function getSurfaceAtlasSlot(slot: pdi.SurfaceAtlasSlot, width: number, height: number): pdi.SurfaceAtlasSlot | null {

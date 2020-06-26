@@ -1,4 +1,4 @@
-import * as pdi from "@akashic/akashic-pdi";
+import * as pdi from "@akashic/pdi-types";
 
 /**
  * ゲームの描画を行うクラス。
