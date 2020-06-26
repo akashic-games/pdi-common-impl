@@ -1,4 +1,4 @@
-import { AudioAssetHint, AudioSystemLike, FontWeightString, ResourceFactoryLike, VideoSystemLike } from "@akashic/akashic-engine";
+import * as pdi from "@akashic/pdi-types";
 import { AudioAsset } from "./AudioAsset";
 import { AudioPlayer } from "./AudioPlayer";
 import { GlyphFactory } from "./GlyphFactory";
@@ -16,7 +16,7 @@ import { VideoAsset } from "./VideoAsset";
  * またこのクラスの各種アセット生成メソッドは、エンジンによって暗黙に呼び出されるものである。
  * 通常ゲーム開発者が呼び出す必要はない。
  */
-export abstract class ResourceFactory implements ResourceFactoryLike {
+export abstract class ResourceFactory implements pdi.ResourceFactory {
 	abstract createImageAsset(id: string, assetPath: string, width: number, height: number): ImageAsset;
 
 	abstract createVideoAsset(
@@ -24,7 +24,7 @@ export abstract class ResourceFactory implements ResourceFactoryLike {
 		assetPath: string,
 		width: number,
 		height: number,
-		system: VideoSystemLike,
+		system: pdi.VideoSystem,
 		loop: boolean,
 		useRealSize: boolean
 	): VideoAsset;
@@ -33,14 +33,14 @@ export abstract class ResourceFactory implements ResourceFactoryLike {
 		id: string,
 		assetPath: string,
 		duration: number,
-		system: AudioSystemLike,
+		system: pdi.AudioSystem,
 		loop: boolean,
-		hint: AudioAssetHint
+		hint: pdi.AudioAssetHint
 	): AudioAsset;
 
 	abstract createTextAsset(id: string, assetPath: string): TextAsset;
 
-	abstract createAudioPlayer(system: AudioSystemLike): AudioPlayer;
+	abstract createAudioPlayer(system: pdi.AudioSystem): AudioPlayer;
 
 	abstract createScriptAsset(id: string, assetPath: string): ScriptAsset;
 
@@ -78,7 +78,7 @@ export abstract class ResourceFactory implements ResourceFactoryLike {
 		strokeWidth?: number,
 		strokeColor?: string,
 		strokeOnly?: boolean,
-		fontWeight?: FontWeightString
+		fontWeight?: pdi.FontWeightString
 	): GlyphFactory;
 
 	createSurfaceAtlas(width: number, height: number): SurfaceAtlas {

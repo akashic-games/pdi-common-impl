@@ -1,4 +1,5 @@
-import { AudioAssetLike, AudioPlayerEvent, AudioPlayerLike, AudioSystemLike, Trigger } from "@akashic/akashic-engine";
+import * as pdi from "@akashic/pdi-types";
+import { Trigger } from "@akashic/trigger";
 
 /**
  * サウンド再生を行うクラス。
@@ -7,22 +8,22 @@ import { AudioAssetLike, AudioPlayerEvent, AudioPlayerLike, AudioSystemLike, Tri
  * または `AudioAsset#play()` によって暗黙的に生成される。
  * ゲーム開発者は本クラスのインスタンスを直接生成すべきではない。
  */
-export class AudioPlayer implements AudioPlayerLike {
+export class AudioPlayer implements pdi.AudioPlayer {
 	/**
 	 * 再生中のオーディオアセット。
 	 * 再生中のものがない場合、 `undefined` 。
 	 */
-	currentAudio: AudioAssetLike | undefined;
+	currentAudio: pdi.AudioAsset | undefined;
 
 	/**
 	 * `play()` が呼び出された時に通知される `Trigger` 。
 	 */
-	onPlay: Trigger<AudioPlayerEvent>;
+	onPlay: Trigger<pdi.AudioPlayerEvent>;
 
 	/**
 	 * `stop()` が呼び出された時に通知される `Trigger` 。
 	 */
-	onStop: Trigger<AudioPlayerEvent>;
+	onStop: Trigger<pdi.AudioPlayerEvent>;
 
 	/**
 	 * 音量。
@@ -37,13 +38,13 @@ export class AudioPlayer implements AudioPlayerLike {
 	 * `play()` が呼び出された時に通知される `Trigger` 。
 	 * @deprecated 非推奨である。将来的に削除される。代わりに `onPlay` を利用すること。
 	 */
-	played: Trigger<AudioPlayerEvent>;
+	played: Trigger<pdi.AudioPlayerEvent>;
 
 	/**
 	 * `stop()` が呼び出された時に通知される `Trigger` 。
 	 * @deprecated 非推奨である。将来的に削除される。代わりに `onStop` を利用すること。
 	 */
-	stopped: Trigger<AudioPlayerEvent>;
+	stopped: Trigger<pdi.AudioPlayerEvent>;
 
 	/**
 	 * ミュート中か否か。
@@ -54,14 +55,14 @@ export class AudioPlayer implements AudioPlayerLike {
 	/**
 	 * @private
 	 */
-	_system: AudioSystemLike;
+	_system: pdi.AudioSystem;
 
 	/**
 	 * `AudioPlayer` のインスタンスを生成する。
 	 */
-	constructor(system: AudioSystemLike) {
-		this.onPlay = new Trigger<AudioPlayerEvent>();
-		this.onStop = new Trigger<AudioPlayerEvent>();
+	constructor(system: pdi.AudioSystem) {
+		this.onPlay = new Trigger<pdi.AudioPlayerEvent>();
+		this.onStop = new Trigger<pdi.AudioPlayerEvent>();
 		this.played = this.onPlay;
 		this.stopped = this.onStop;
 		this.currentAudio = undefined;
@@ -76,7 +77,7 @@ export class AudioPlayer implements AudioPlayerLike {
 	 * 再生後、 `this.onPlay` がfireされる。
 	 * @param audio 再生するオーディオアセット
 	 */
-	play(audio: AudioAssetLike): void {
+	play(audio: pdi.AudioAsset): void {
 		this.currentAudio = audio;
 		this.onPlay.fire({
 			player: this,

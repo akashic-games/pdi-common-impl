@@ -1,4 +1,4 @@
-import { AudioAssetHint, AudioAssetLike, AudioPlayerLike, AudioSystemLike } from "@akashic/akashic-engine";
+import * as pdi from "@akashic/pdi-types";
 import { Asset } from "./Asset";
 
 /**
@@ -9,24 +9,24 @@ import { Asset } from "./Asset";
  *
  * AudioAsset#playを呼び出す事で、その音を再生することが出来る。
  */
-export abstract class AudioAsset extends Asset implements AudioAssetLike {
+export abstract class AudioAsset extends Asset implements pdi.AudioAsset {
 	type: "audio" = "audio";
 	data: any;
 	duration: number;
 	loop: boolean;
-	hint: AudioAssetHint;
+	hint: pdi.AudioAssetHint;
 
 	/**
 	 * @private
 	 */
-	_system: AudioSystemLike;
+	_system: pdi.AudioSystem;
 
 	/**
 	 * @private
 	 */
-	_lastPlayedPlayer: AudioPlayerLike | undefined;
+	_lastPlayedPlayer: pdi.AudioPlayer | undefined;
 
-	constructor(id: string, assetPath: string, duration: number, system: AudioSystemLike, loop: boolean, hint: AudioAssetHint) {
+	constructor(id: string, assetPath: string, duration: number, system: pdi.AudioSystem, loop: boolean, hint: pdi.AudioAssetHint) {
 		super(id, assetPath);
 		this.duration = duration;
 		this.loop = loop;
@@ -35,7 +35,7 @@ export abstract class AudioAsset extends Asset implements AudioAssetLike {
 		this.data = undefined;
 	}
 
-	play(): AudioPlayerLike {
+	play(): pdi.AudioPlayer {
 		var player = this._system.createPlayer();
 		player.play(this);
 		this._lastPlayedPlayer = player;

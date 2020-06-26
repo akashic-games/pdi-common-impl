@@ -1,4 +1,4 @@
-import { ScriptAssetLike, ScriptAssetRuntimeValue } from "@akashic/akashic-engine";
+import * as pdi from "@akashic/pdi-types";
 import { Asset } from "./Asset";
 
 /**
@@ -10,7 +10,7 @@ import { Asset } from "./Asset";
  * ScriptAsset#executeによって、本リソースが表すスクリプトを実行し、その結果を受け取る事が出来る。
  * requireによる参照とは異なり、executeはキャッシュされないため、何度でも呼び出し違う結果を受け取ることが出来る。
  */
-export abstract class ScriptAsset extends Asset implements ScriptAssetLike {
+export abstract class ScriptAsset extends Asset implements pdi.ScriptAsset {
 	type: "script" = "script";
 	script: string;
 
@@ -19,7 +19,7 @@ export abstract class ScriptAsset extends Asset implements ScriptAssetLike {
 		this.script = undefined!;
 	}
 
-	abstract execute(execEnv: ScriptAssetRuntimeValue): any;
+	abstract execute(execEnv: pdi.ScriptAssetRuntimeValue): any;
 
 	destroy(): void {
 		this.script = undefined!;

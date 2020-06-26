@@ -1,11 +1,11 @@
-import { CompositeOperationString, ImageData, RendererLike, ShaderProgramLike, SurfaceLike } from "@akashic/akashic-engine";
+import * as pdi from "@akashic/pdi-types";
 
 /**
  * ゲームの描画を行うクラス。
  *
  * 描画は各エンティティによって行われる。通常、ゲーム開発者が本クラスを利用する必要はない。
  */
-export abstract class Renderer implements RendererLike {
+export abstract class Renderer implements pdi.Renderer {
 	begin(): void {
 		// nothing to do
 	}
@@ -24,7 +24,7 @@ export abstract class Renderer implements RendererLike {
 	 * @param destOffsetY 描画先のY座標。0以上の数値でなければならない
 	 */
 	abstract drawImage(
-		surface: SurfaceLike,
+		surface: pdi.Surface,
 		offsetX: number,
 		offsetY: number,
 		width: number,
@@ -34,7 +34,7 @@ export abstract class Renderer implements RendererLike {
 	): void;
 
 	abstract drawSprites(
-		surface: SurfaceLike,
+		surface: pdi.Surface,
 		offsetX: number[],
 		offsetY: number[],
 		width: number[],
@@ -58,7 +58,7 @@ export abstract class Renderer implements RendererLike {
 
 	abstract fillRect(x: number, y: number, width: number, height: number, cssColor: string): void;
 
-	abstract setCompositeOperation(operation: CompositeOperationString): void;
+	abstract setCompositeOperation(operation: pdi.CompositeOperationString): void;
 
 	abstract setTransform(matrix: number[]): void;
 
@@ -73,7 +73,7 @@ export abstract class Renderer implements RendererLike {
 	 * 本Rendererにシェーダを設定する。
 	 * 引数に `null` が指定された場合、本Rendererに設定されているシェーダの設定を解除する。
 	 */
-	abstract setShaderProgram(shaderProgram: ShaderProgramLike | null): void;
+	abstract setShaderProgram(shaderProgram: pdi.ShaderProgram | null): void;
 
 	/**
 	 * 本Rendererの描画内容を表すImageDataを取得する。
@@ -81,7 +81,7 @@ export abstract class Renderer implements RendererLike {
 	 * 本メソッドの呼び出しは `Renderer#end()` から `Renderer#begin()` の間でなければならない。
 	 * NOTE: 実行環境によっては戻り値が `null` または `undefined` となりえることに注意。
 	 */
-	abstract _getImageData(sx: number, sy: number, sw: number, sh: number): ImageData;
+	abstract _getImageData(sx: number, sy: number, sw: number, sh: number): pdi.ImageData;
 
 	/**
 	 * 本Rendererの描画内容を上書きする。
@@ -89,7 +89,7 @@ export abstract class Renderer implements RendererLike {
 	 * 本メソッドの呼び出しは `Renderer#end()` から `Renderer#begin()` の間でなければならない。
 	 */
 	abstract _putImageData(
-		imageData: ImageData,
+		imageData: pdi.ImageData,
 		dx: number,
 		dy: number,
 		dirtyX?: number,

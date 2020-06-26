@@ -1,18 +1,18 @@
-import { AssertionError, AssetLoadError, TypeMismatchError } from "@akashic/akashic-engine";
+import * as pdi from "@akashic/pdi-types";
 
 /**
  * 例外生成ファクトリ。
  * エンジン内部での例外生成に利用するもので、ゲーム開発者は通常本モジュールを利用する必要はない。
  */
 export module ExceptionFactory {
-	export function createAssertionError(message: string, cause?: any): AssertionError {
-		var e: AssertionError = <AssertionError> new Error(message);
+	export function createAssertionError(message: string, cause?: any): pdi.AssertionError {
+		var e: pdi.AssertionError = <pdi.AssertionError> new Error(message);
 		e.name = "AssertionError";
 		e.cause = cause;
 		return e;
 	}
 
-	export function createTypeMismatchError(methodName: string, expected: any, actual?: any, cause?: any): TypeMismatchError {
+	export function createTypeMismatchError(methodName: string, expected: any, actual?: any, cause?: any): pdi.TypeMismatchError {
 		var message = "Type mismatch on " + methodName + "," + " expected type is " + expected;
 		if (arguments.length > 2) {
 			// actual 指定時
@@ -29,7 +29,7 @@ export module ExceptionFactory {
 			}
 		}
 		message += ".";
-		var e: TypeMismatchError = <TypeMismatchError> new Error(message);
+		var e: pdi.TypeMismatchError = <pdi.TypeMismatchError> new Error(message);
 		e.name = "TypeMismatchError";
 		e.cause = cause;
 		e.expected = expected;
@@ -42,8 +42,8 @@ export module ExceptionFactory {
 		retriable: boolean = true,
 		_type: unknown = null, // 歴史的経緯により残っている値。利用していない。
 		cause?: any
-	): AssetLoadError {
-		var e: AssetLoadError = <AssetLoadError> new Error(message);
+	): pdi.AssetLoadError {
+		var e: pdi.AssetLoadError = <pdi.AssetLoadError> new Error(message);
 		e.name = "AssetLoadError";
 		e.cause = cause;
 		e.retriable = retriable;

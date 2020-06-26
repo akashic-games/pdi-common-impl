@@ -1,4 +1,4 @@
-import { ImageAssetHint, ImageAssetLike, SurfaceLike } from "@akashic/akashic-engine";
+import * as pdi from "@akashic/pdi-types";
 import { Asset } from "./Asset";
 
 /**
@@ -10,11 +10,11 @@ import { Asset } from "./Asset";
  * width, heightでメタデータとして画像の大きさをとることは出来るが、
  * ゲーム開発者はそれ以外の情報を本クラスから直接は取得せず、Sprite等に本リソースを指定して利用する。
  */
-export abstract class ImageAsset extends Asset implements ImageAssetLike {
+export abstract class ImageAsset extends Asset implements pdi.ImageAsset {
 	type: "image" = "image";
 	width: number;
 	height: number;
-	hint: ImageAssetHint | undefined;
+	hint: pdi.ImageAssetHint | undefined;
 
 	constructor(id: string, assetPath: string, width: number, height: number) {
 		super(id, assetPath);
@@ -22,9 +22,9 @@ export abstract class ImageAsset extends Asset implements ImageAssetLike {
 		this.height = height;
 	}
 
-	abstract asSurface(): SurfaceLike;
+	abstract asSurface(): pdi.Surface;
 
-	initialize(hint: ImageAssetHint | undefined): void {
+	initialize(hint: pdi.ImageAssetHint | undefined): void {
 		this.hint = hint;
 	}
 }

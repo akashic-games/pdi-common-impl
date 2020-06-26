@@ -1,4 +1,4 @@
-import { FontWeightString, GlyphFactoryLike, GlyphLike } from "@akashic/akashic-engine";
+import * as pdi from "@akashic/pdi-types";
 
 /**
  * グリフファクトリ。
@@ -7,7 +7,7 @@ import { FontWeightString, GlyphFactoryLike, GlyphLike } from "@akashic/akashic-
  *
  * 本クラスのインスタンスをゲーム開発者が直接生成することはなく、ゲーム開発者が利用する必要もない。
  */
-export abstract class GlyphFactory implements GlyphFactoryLike {
+export abstract class GlyphFactory implements pdi.GlyphFactory {
 	/**
 	 * フォントファミリ。
 	 *
@@ -41,7 +41,7 @@ export abstract class GlyphFactory implements GlyphFactoryLike {
 	 *
 	 * この値は参照のためにのみ公開されている。ゲーム開発者はこの値を変更すべきではない。
 	 */
-	fontWeight: FontWeightString;
+	fontWeight: pdi.FontWeightString;
 
 	/**
 	 * 輪郭幅。
@@ -83,7 +83,7 @@ export abstract class GlyphFactory implements GlyphFactoryLike {
 		strokeWidth: number = 0,
 		strokeColor: string = "black",
 		strokeOnly: boolean = false,
-		fontWeight: FontWeightString = "normal"
+		fontWeight: pdi.FontWeightString = "normal"
 	) {
 		this.fontFamily = fontFamily;
 		this.fontSize = fontSize;
@@ -102,5 +102,5 @@ export abstract class GlyphFactory implements GlyphFactoryLike {
 	 *
 	 * @param code 文字コード
 	 */
-	abstract create(code: number): GlyphLike;
+	abstract create(code: number): pdi.Glyph;
 }
