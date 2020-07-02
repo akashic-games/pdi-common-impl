@@ -5,7 +5,6 @@ import { GlyphFactory } from "./GlyphFactory";
 import { ImageAsset } from "./ImageAsset";
 import { ScriptAsset } from "./ScriptAsset";
 import { Surface } from "./Surface";
-import { SurfaceAtlas } from "./SurfaceAtlas";
 import { TextAsset } from "./TextAsset";
 import { VideoAsset } from "./VideoAsset";
 
@@ -80,8 +79,4 @@ export abstract class ResourceFactory implements pdi.ResourceFactory {
 		strokeOnly?: boolean,
 		fontWeight?: pdi.FontWeightString
 	): GlyphFactory;
-
-	createSurfaceAtlas(width: number, height: number): SurfaceAtlas {
-		return new SurfaceAtlas(this.createSurface(width, height));
-	}
 }

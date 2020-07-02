@@ -10,8 +10,6 @@ export * from "./Renderer";
 export * from "./ResourceFactory";
 export * from "./ScriptAsset";
 export * from "./Surface";
-export * from "./SurfaceAtlas";
-export * from "./SurfaceAtrasSlot";
 export * from "./TextAsset";
 export * from "./VideoAsset";
 export * from "./VideoPlayer";
