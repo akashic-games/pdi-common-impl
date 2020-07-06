@@ -2,7 +2,7 @@
 
 ## 0.0.3
 
-* @akashic/pdi-types@1.0.1 に追従
+* @akashic/pdi-types の 1.0.1 に追従
 
 ## 0.0.2
 
