@@ -76,7 +76,7 @@ export class Glyph implements pdi.Glyph {
 	 */
 	isSurfaceValid: boolean;
 
-	_atlas: pdi.SurfaceAtlas | null;
+	_atlas: unknown;
 
 	/**
 	 * `Glyph` のインスタンスを生成する。
