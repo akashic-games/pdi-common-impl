@@ -14,7 +14,7 @@
     "lint": "npm run format && npm run eslint && npm run lint:md",
     "lint:md": "remark ./*.md --frail --no-stdout --quiet --rc-path ./.remarkrc",
     "format": "prettier --write \"src/**/*.ts\" --config prettier.config.json",
-    "eslint": "eslint -c .eslintrc \"src/**/*.ts\" --fix"
+    "eslint": "eslint \"src/**/*.ts\" --fix"
   },
   "repository": {
     "type": "git",
