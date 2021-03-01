@@ -5,8 +5,7 @@
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
-    "prepublish": "npm run clean && npm run build",
-    "prepare": "npm run prepublish",
+    "prepare": "npm run clean && npm run build",
     "build": "npm run clean && tsc -p ./",
     "clean": "rimraf -r lib",
     "test": "npm run test:jest && npm run lint",
