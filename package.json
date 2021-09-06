@@ -1,6 +1,6 @@
 {
   "name": "@akashic/pdi-common-impl",
-  "version": "1.0.0-feature.0",
+  "version": "0.2.0-feature.0",
   "description": "Common implementation of PDI",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
