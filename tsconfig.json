@@ -6,7 +6,8 @@
     "strict": true,
     "declaration": true,
     "outDir": "./lib",
-    "sourceMap": false
+    "sourceMap": false,
+    "useUnknownInCatchVariables": false
   },
   "includes": [
     "./src/**/*.ts"
