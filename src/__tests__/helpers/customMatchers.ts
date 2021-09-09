@@ -10,7 +10,7 @@ export const customMatchers = {
 
 		try {
 			received();
-		} catch (e) {
+		} catch (e: any) {
 			threw = true;
 			thrown = e;
 		}
