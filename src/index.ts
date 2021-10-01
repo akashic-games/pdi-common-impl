@@ -11,5 +11,6 @@ export * from "./ResourceFactory";
 export * from "./ScriptAsset";
 export * from "./Surface";
 export * from "./TextAsset";
+export * from "./VectorImageAsset";
 export * from "./VideoAsset";
 export * from "./VideoPlayer";

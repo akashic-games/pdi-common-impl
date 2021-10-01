@@ -6,6 +6,7 @@ import { ImageAsset } from "./ImageAsset";
 import { ScriptAsset } from "./ScriptAsset";
 import { Surface } from "./Surface";
 import { TextAsset } from "./TextAsset";
+import { VectorImageAsset } from "./VectorImageAsset";
 import { VideoAsset } from "./VideoAsset";
 
 /**
@@ -42,6 +43,14 @@ export abstract class ResourceFactory implements pdi.ResourceFactory {
 	abstract createAudioPlayer(system: pdi.AudioSystem): AudioPlayer;
 
 	abstract createScriptAsset(id: string, assetPath: string): ScriptAsset;
+
+	abstract createVectorImageAsset(
+		id: string,
+		assetPath: string,
+		width: number,
+		height: number,
+		hint?: pdi.VectorImageAssetHint
+	): VectorImageAsset;
 
 	/**
 	 * Surface を作成する。
