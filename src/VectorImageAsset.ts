@@ -22,12 +22,5 @@ export abstract class VectorImageAsset extends Asset implements pdi.VectorImageA
 
 	abstract createSurface(width: number, height: number): pdi.Surface | null;
 
-	abstract createSurface(
-		 width: number,
-		 height: number,
-		 sx: number,
-		 sy: number,
-		 sWidth: number,
-		 sHeight: number
-	 ): pdi.Surface | null;
+	abstract createSurface(width: number, height: number, sx: number, sy: number, sWidth: number, sHeight: number): pdi.Surface | null;
 }
