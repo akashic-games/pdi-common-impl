@@ -92,7 +92,7 @@ export class AudioPlayer implements pdi.AudioPlayer {
 	 * 再生中でない場合、何もしない(`onStop` もfireされない)。
 	 */
 	stop(): void {
-		var audio = this.currentAudio;
+		let audio = this.currentAudio;
 		if (!audio) return;
 		this.currentAudio = undefined;
 		this.onStop.fire({

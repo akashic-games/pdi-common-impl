@@ -8,7 +8,7 @@ export module PdiCommonUtil {
 	 * @param ext 追加する拡張子
 	 */
 	export function addExtname(path: string, ext: string): string {
-		var index = path.indexOf("?");
+		let index = path.indexOf("?");
 		if (index === -1) {
 			return path + "." + ext;
 		}
