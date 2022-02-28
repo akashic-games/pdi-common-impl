@@ -83,7 +83,7 @@ export class VideoPlayer implements pdi.VideoPlayer {
 	 * 停止後、 `this.onStop` がfireされる。
 	 */
 	stop(): void {
-		var videoAsset = this.currentVideo;
+		let videoAsset = this.currentVideo;
 		this.onStop.fire({
 			player: this,
 			video: videoAsset
