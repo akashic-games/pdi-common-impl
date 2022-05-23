@@ -1,13 +1,13 @@
-import * as pdi from "@akashic/pdi-types";
-import { AudioAsset } from "./AudioAsset";
-import { AudioPlayer } from "./AudioPlayer";
-import { GlyphFactory } from "./GlyphFactory";
-import { ImageAsset } from "./ImageAsset";
-import { ScriptAsset } from "./ScriptAsset";
-import { Surface } from "./Surface";
-import { TextAsset } from "./TextAsset";
-import { VectorImageAsset } from "./VectorImageAsset";
-import { VideoAsset } from "./VideoAsset";
+import type * as pdi from "@akashic/pdi-types";
+import type { AudioAsset } from "./AudioAsset";
+import type { AudioPlayer } from "./AudioPlayer";
+import type { GlyphFactory } from "./GlyphFactory";
+import type { ImageAsset } from "./ImageAsset";
+import type { ScriptAsset } from "./ScriptAsset";
+import type { Surface } from "./Surface";
+import type { TextAsset } from "./TextAsset";
+import type { VectorImageAsset } from "./VectorImageAsset";
+import type { VideoAsset } from "./VideoAsset";
 
 /**
  * リソースの生成を行うクラス。
