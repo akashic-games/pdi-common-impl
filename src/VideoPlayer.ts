@@ -1,4 +1,4 @@
-import * as pdi from "@akashic/pdi-types";
+import type * as pdi from "@akashic/pdi-types";
 import { Trigger } from "@akashic/trigger";
 
 /**
@@ -83,7 +83,7 @@ export class VideoPlayer implements pdi.VideoPlayer {
 	 * 停止後、 `this.onStop` がfireされる。
 	 */
 	stop(): void {
-		let videoAsset = this.currentVideo;
+		const videoAsset = this.currentVideo;
 		this.onStop.fire({
 			player: this,
 			video: videoAsset

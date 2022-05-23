@@ -1,4 +1,4 @@
-import * as pdi from "@akashic/pdi-types";
+import type * as pdi from "@akashic/pdi-types";
 
 /**
  * 例外生成ファクトリ。
@@ -6,7 +6,7 @@ import * as pdi from "@akashic/pdi-types";
  */
 export module ExceptionFactory {
 	export function createAssertionError(message: string, cause?: any): pdi.AssertionError {
-		let e: pdi.AssertionError = <pdi.AssertionError> new Error(message);
+		const e: pdi.AssertionError = <pdi.AssertionError> new Error(message);
 		e.name = "AssertionError";
 		e.cause = cause;
 		return e;
@@ -29,7 +29,7 @@ export module ExceptionFactory {
 			}
 		}
 		message += ".";
-		let e: pdi.TypeMismatchError = <pdi.TypeMismatchError> new Error(message);
+		const e: pdi.TypeMismatchError = <pdi.TypeMismatchError> new Error(message);
 		e.name = "TypeMismatchError";
 		e.cause = cause;
 		e.expected = expected;
@@ -43,7 +43,7 @@ export module ExceptionFactory {
 		_type: unknown = null, // 歴史的経緯により残っている値。利用していない。
 		cause?: any
 	): pdi.AssetLoadError {
-		let e: pdi.AssetLoadError = <pdi.AssetLoadError> new Error(message);
+		const e: pdi.AssetLoadError = <pdi.AssetLoadError> new Error(message);
 		e.name = "AssetLoadError";
 		e.cause = cause;
 		e.retriable = retriable;
