@@ -1,4 +1,4 @@
-import * as pdi from "@akashic/pdi-types";
+import type * as pdi from "@akashic/pdi-types";
 import { Asset } from "./Asset";
 
 /**
@@ -36,14 +36,14 @@ export abstract class AudioAsset extends Asset implements pdi.AudioAsset {
 	}
 
 	play(): pdi.AudioPlayer {
-		let player = this._system.createPlayer();
+		const player = this._system.createPlayer();
 		player.play(this);
 		this._lastPlayedPlayer = player;
 		return player;
 	}
 
 	stop(): void {
-		let players = this._system.findPlayers(this);
+		const players = this._system.findPlayers(this);
 		for (let i = 0; i < players.length; ++i) players[i].stop();
 	}
 

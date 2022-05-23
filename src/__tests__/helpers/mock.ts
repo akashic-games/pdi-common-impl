@@ -1,4 +1,4 @@
-import * as pdi from "@akashic/pdi-types";
+import type * as pdi from "@akashic/pdi-types";
 import * as pci from "../../";
 
 export class AudioSystem implements pdi.AudioSystem {

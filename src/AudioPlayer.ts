@@ -1,4 +1,4 @@
-import * as pdi from "@akashic/pdi-types";
+import type * as pdi from "@akashic/pdi-types";
 import { Trigger } from "@akashic/trigger";
 
 /**
@@ -92,7 +92,7 @@ export class AudioPlayer implements pdi.AudioPlayer {
 	 * 再生中でない場合、何もしない(`onStop` もfireされない)。
 	 */
 	stop(): void {
-		let audio = this.currentAudio;
+		const audio = this.currentAudio;
 		if (!audio) return;
 		this.currentAudio = undefined;
 		this.onStop.fire({
