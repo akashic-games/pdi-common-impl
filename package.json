@@ -27,7 +27,7 @@
     "package.json"
   ],
   "dependencies": {
-    "@akashic/trigger": "~1.0.0"
+    "@akashic/trigger": "~1.0.1"
   },
   "devDependencies": {
     "@akashic/eslint-config": "^1.1.0",
