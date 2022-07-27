@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.3.0-beta.0
+* @akashic/pdi-types の 1.3.0-beta.0 に追従
+
 ## 0.2.1
 
 * @akashic/trigger 更新に伴うバージョンアップ

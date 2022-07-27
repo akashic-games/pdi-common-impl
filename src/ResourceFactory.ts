@@ -88,4 +88,6 @@ export abstract class ResourceFactory implements pdi.ResourceFactory {
 		strokeOnly?: boolean,
 		fontWeight?: pdi.FontWeightString
 	): GlyphFactory;
+
+	abstract createVectorImageAssetFromString(id: string, data: string): VectorImageAsset;
 }
