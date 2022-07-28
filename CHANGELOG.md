@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 1.0.0
+* @akashic/pdi-types を `dependencies` に移動
+
 ## 0.2.1
 
 * @akashic/trigger 更新に伴うバージョンアップ
