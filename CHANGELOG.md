@@ -1,7 +1,7 @@
 # CHANGELOG
 
-## 0.3.0-beta.0
-* @akashic/pdi-types の 1.4.0-beta.0 に追従
+## 1.0.0
+* @akashic/pdi-types を `dependencies` に移動
 
 ## 0.2.1
 
