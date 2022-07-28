@@ -6,7 +6,6 @@ import type { ImageAsset } from "./ImageAsset";
 import type { ScriptAsset } from "./ScriptAsset";
 import type { Surface } from "./Surface";
 import type { TextAsset } from "./TextAsset";
-import type { VectorImageAsset } from "./VectorImageAsset";
 import type { VideoAsset } from "./VideoAsset";
 
 /**
@@ -44,14 +43,6 @@ export abstract class ResourceFactory implements pdi.ResourceFactory {
 
 	abstract createScriptAsset(id: string, assetPath: string): ScriptAsset;
 
-	abstract createVectorImageAsset(
-		id: string,
-		assetPath: string,
-		width: number,
-		height: number,
-		hint?: pdi.VectorImageAssetHint
-	): VectorImageAsset;
-
 	/**
 	 * Surface を作成する。
 	 * 与えられたサイズで、ゲーム開発者が利用できる描画領域 (`Surface`) を作成して返す。
@@ -88,6 +79,4 @@ export abstract class ResourceFactory implements pdi.ResourceFactory {
 		strokeOnly?: boolean,
 		fontWeight?: pdi.FontWeightString
 	): GlyphFactory;
-
-	abstract createVectorImageAssetFromString(id: string, data: string): VectorImageAsset;
 }
