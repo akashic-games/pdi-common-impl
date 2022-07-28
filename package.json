@@ -47,7 +47,6 @@
     "typescript": "^4.7.4"
   },
   "publishConfig": {
-    "@akashic:registry": "https://registry.npmjs.org/",
-    "tag": "next"
+    "@akashic:registry": "https://registry.npmjs.org/"
   }
 }
