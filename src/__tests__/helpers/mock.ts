@@ -44,9 +44,10 @@ export class AudioAsset extends pci.AudioAsset {
 		duration: number,
 		system: pdi.AudioSystem,
 		loop: boolean,
-		hint: pdi.AudioAssetHint
+		hint: pdi.AudioAssetHint,
+		offset: number
 	) {
-		super(id, assetPath, duration, system, loop, hint);
+		super(id, assetPath, duration, system, loop, hint, offset);
 	}
 	_load(_loader: pdi.AssetLoadHandler): void {
 		// do nothing
