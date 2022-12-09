@@ -45,7 +45,7 @@ export class AudioAsset extends pci.AudioAsset {
 		system: pdi.AudioSystem,
 		loop: boolean,
 		hint: pdi.AudioAssetHint,
-		offset: number
+		offset: number | undefined
 	) {
 		super(id, assetPath, duration, system, loop, hint, offset);
 	}

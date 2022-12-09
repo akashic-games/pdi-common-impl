@@ -15,7 +15,7 @@ export abstract class AudioAsset extends Asset implements pdi.AudioAsset {
 	duration: number;
 	loop: boolean;
 	hint: pdi.AudioAssetHint;
-	offset: number;
+	offset: number | undefined;
 
 	/**
 	 * @private
@@ -34,7 +34,7 @@ export abstract class AudioAsset extends Asset implements pdi.AudioAsset {
 		system: pdi.AudioSystem,
 		loop: boolean,
 		hint: pdi.AudioAssetHint,
-		offset: number
+		offset: number | undefined
 	) {
 		super(id, assetPath);
 		this.duration = duration;

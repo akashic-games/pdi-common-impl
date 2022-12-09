@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 1.2.0
+* @akashic/pdi-types の 1.6.0 に追従
+
 ## 1.1.0
 * @akashic/pdi-types の 1.5.0 に追従
 
