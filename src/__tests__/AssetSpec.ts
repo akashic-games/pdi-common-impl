@@ -19,6 +19,23 @@ describe("test Asset", () => {
 		expect(asset.offset).toBe(10);
 	});
 
+	it("AudioAsset 初期化 offset なし", () => {
+		const id = "id";
+		const path = "path";
+		const duration = 1984;
+		const system = new AudioSystem(id, 10);
+		const hint = { streaming: true };
+		const asset = new AudioAsset(0, id, path, duration, system, true, hint, undefined);
+		expect(asset.id).toBe(id);
+		expect(asset.path).toBe(path);
+		expect(asset.originalPath).toBe(path);
+		expect(asset.duration).toBe(duration);
+		expect(asset._system).toBe(system);
+		expect(asset.loop).toBe(true);
+		expect(asset.hint).toBe(hint);
+		expect(asset.offset).toBe(undefined);
+	});
+
 	it("VideoAsset 初期化", () => {
 		const id = "id";
 		const path = "path";
