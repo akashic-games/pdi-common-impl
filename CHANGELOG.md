@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.3.0
+* @akashic/trigger を 2.0.0 に更新
+* @akashic/pdi-types を 1.8.0 に更新
+
 ## 1.2.0
 * @akashic/pdi-types の 1.6.0 に追従
 
