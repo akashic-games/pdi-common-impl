@@ -13,9 +13,11 @@ import { Asset } from "./Asset";
 export abstract class ScriptAsset extends Asset implements pdi.ScriptAsset {
 	type: "script" = "script";
 	script: string;
+	exports: string[];
 
-	constructor(id: string, path: string) {
+	constructor(id: string, path: string, exports: string[] = []) {
 		super(id, path);
+		this.exports = exports;
 		this.script = undefined!;
 	}
 
