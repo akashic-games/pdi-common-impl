@@ -1,6 +1,7 @@
 export * from "./Asset";
 export * from "./AudioAsset";
 export * from "./AudioPlayer";
+export * from "./BinaryAsset";
 export * from "./ExceptionFactory";
 export * from "./Glyph";
 export * from "./GlyphFactory";
