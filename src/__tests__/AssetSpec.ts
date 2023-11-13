@@ -8,7 +8,8 @@ describe("test Asset", () => {
 		const system = new AudioSystem(id, 10);
 		const hint = { streaming: true };
 		const offset = 10;
-		const asset = new AudioAsset(0, id, path, duration, system, true, hint, offset);
+		const loopOffset = 20;
+		const asset = new AudioAsset(0, id, path, duration, system, true, hint, offset, loopOffset);
 		expect(asset.id).toBe(id);
 		expect(asset.path).toBe(path);
 		expect(asset.originalPath).toBe(path);
@@ -17,6 +18,7 @@ describe("test Asset", () => {
 		expect(asset.loop).toBe(true);
 		expect(asset.hint).toBe(hint);
 		expect(asset.offset).toBe(10);
+		expect(asset.loopOffset).toBe(20);
 	});
 
 	it("AudioAsset 初期化 offset なし", () => {
@@ -25,7 +27,7 @@ describe("test Asset", () => {
 		const duration = 1984;
 		const system = new AudioSystem(id, 10);
 		const hint = { streaming: true };
-		const asset = new AudioAsset(0, id, path, duration, system, true, hint, undefined);
+		const asset = new AudioAsset(0, id, path, duration, system, true, hint, undefined, undefined);
 		expect(asset.id).toBe(id);
 		expect(asset.path).toBe(path);
 		expect(asset.originalPath).toBe(path);
@@ -34,6 +36,7 @@ describe("test Asset", () => {
 		expect(asset.loop).toBe(true);
 		expect(asset.hint).toBe(hint);
 		expect(asset.offset).toBe(undefined);
+		expect(asset.loopOffset).toBe(undefined);
 	});
 
 	it("VideoAsset 初期化", () => {

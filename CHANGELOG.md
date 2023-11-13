@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 1.5.0-beta.0
+* @akashic/pdi-types を 1.13.0-beta.0 に追従
+
 ## 1.4.0
 * @akashic/pdi-types を 1.10.0 に更新
 

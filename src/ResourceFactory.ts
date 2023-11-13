@@ -35,7 +35,8 @@ export abstract class ResourceFactory implements pdi.ResourceFactory {
 		system: pdi.AudioSystem,
 		loop: boolean,
 		hint: pdi.AudioAssetHint,
-		offset?: number
+		offset?: number,
+		loopOffset?: number
 	): AudioAsset;
 
 	abstract createTextAsset(id: string, assetPath: string): TextAsset;
