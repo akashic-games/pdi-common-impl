@@ -22,8 +22,9 @@ describe("test Surface", () => {
 		expect(surface._drawable).toBe(true);
 	});
 
-	it("初期化 - invalid params", () => {
-		expect(() => new Surface(1.1, 2)).toThrowError("AssertionError");
-		expect(() => new Surface(1, 2.1)).toThrowError("AssertionError");
+	it("初期化 - non-integer", () => {
+		const surface = new Surface(1.1, 2.1, true);
+		expect(surface.width).toBe(1);
+		expect(surface.height).toBe(2);
 	});
 });

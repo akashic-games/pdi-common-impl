@@ -1,5 +1,4 @@
 import type * as pdi from "@akashic/pdi-types";
-import { ExceptionFactory } from "./ExceptionFactory";
 
 /**
  * 描画領域を表すクラス。
@@ -35,17 +34,13 @@ export abstract class Surface implements pdi.Surface, pdi.CommonSize {
 
 	/**
 	 * `Surface` のインスタンスを生成する。
-	 * @param width 描画領域の幅（整数値でなければならない）
-	 * @param height 描画領域の高さ（整数値でなければならない）
+	 * @param width 描画領域の幅
+	 * @param height 描画領域の高さ
 	 * @param drawable 描画可能な実体。省略された場合、 `undefined`
 	 */
 	constructor(width: number, height: number, drawable?: any) {
-		if (width % 1 !== 0 || height % 1 !== 0) {
-			throw ExceptionFactory.createAssertionError("Surface#constructor: width and height must be integers");
-		}
-
-		this.width = width;
-		this.height = height;
+		this.width = Math.floor(width);
+		this.height = Math.floor(height);
 		this._drawable = drawable;
 		// this._destroyedは破棄時に一度だけ代入する特殊なフィールドなため、コンストラクタで初期値を代入しない
 	}
