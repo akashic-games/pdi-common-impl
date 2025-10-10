@@ -2,7 +2,7 @@ name: test
 
 on: [push, pull_request]
 
-oermissions:
+permissions:
   contents: read
 
 jobs:
